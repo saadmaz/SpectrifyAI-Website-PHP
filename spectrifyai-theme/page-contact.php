@@ -45,7 +45,8 @@ if ( 'POST' === $_SERVER['REQUEST_METHOD'] && isset( $_POST['spectrifyai_contact
                 $org,
                 $message
             );
-            $headers = array( 'Reply-To: ' . $name . ' <' . $email . '>' );
+            $safe_reply_name = str_replace( array( "\r", "\n" ), '', $name );
+            $headers         = array( 'Reply-To: ' . $safe_reply_name . ' <' . $email . '>' );
 
             if ( wp_mail( $to, $subject, $body, $headers ) ) {
                 $success = __( 'Thanks for reaching out. Our team will contact you shortly.', 'spectrifyai-theme' );
