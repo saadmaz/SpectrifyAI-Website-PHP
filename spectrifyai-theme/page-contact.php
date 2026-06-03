@@ -45,8 +45,10 @@ if ( 'POST' === $_SERVER['REQUEST_METHOD'] && isset( $_POST['spectrifyai_contact
                 $org,
                 $message
             );
-            $sanitized_name = str_replace( array( "\r", "\n" ), '', $name );
-            $headers        = array( 'Reply-To: ' . $sanitized_name . ' <' . $email . '>' );
+            $sanitized_name = preg_replace( '/[\r\n<>"]+/', '', $name );
+            $sanitized_name = is_string( $sanitized_name ) ? sanitize_text_field( $sanitized_name ) : '';
+            $reply_to       = '' !== $sanitized_name ? $sanitized_name . ' <' . $email . '>' : $email;
+            $headers        = array( 'Reply-To: ' . $reply_to );
 
             if ( wp_mail( $to, $subject, $body, $headers ) ) {
                 $success = __( 'Thanks for reaching out. Our team will contact you shortly.', 'spectrifyai-theme' );

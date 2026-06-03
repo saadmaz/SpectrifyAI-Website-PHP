@@ -1,8 +1,6 @@
 .container {
     width: min(calc(100% - 2rem), var(--container-max));
     margin-inline: auto;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .section {
