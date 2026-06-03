@@ -1,0 +1,75 @@
+/*
+Theme Name: SpectrifyAI Theme
+Theme URI: https://spectrifyai.com/
+Author: SpectrifyAI
+Author URI: https://spectrifyai.com/
+Description: Custom WordPress theme for SpectrifyAI, focused on tea quality intelligence.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 8.0
+Text Domain: spectrifyai-theme
+*/
+
+:root {
+    --color-forest: #1B4332;
+    --color-cream: #F8F5F0;
+    --color-gold: #C9A84C;
+    --color-charcoal: #1A1A1A;
+    --color-white: #FFFFFF;
+
+    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Playfair Display', serif;
+
+    --text-xs: 0.875rem;
+    --text-sm: 1rem;
+    --text-md: 1.125rem;
+    --text-lg: 1.5rem;
+    --text-xl: 2rem;
+    --text-2xl: 2.75rem;
+
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 3rem;
+    --space-6: 4rem;
+
+    --container-max: 1200px;
+    --radius: 0.625rem;
+    --shadow-soft: 0 12px 30px rgba(26, 26, 26, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: var(--color-charcoal);
+    background-color: var(--color-cream);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
