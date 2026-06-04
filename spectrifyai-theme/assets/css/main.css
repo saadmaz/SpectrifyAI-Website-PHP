@@ -541,3 +541,179 @@ textarea {
     font-size: var(--text-sm);
     text-decoration: none;
 }
+
+/* ── About: hero subhead ────────────────────────────── */
+.hero-about {
+    background: rgba(27, 67, 50, 0.04);
+    border-bottom: 1px solid rgba(27, 67, 50, 0.08);
+}
+
+.lead {
+    font-size: var(--text-lg);
+    max-width: 44rem;
+    line-height: 1.65;
+}
+
+/* ── About: values ──────────────────────────────────── */
+.values-grid {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+}
+
+.value-card {
+    padding: var(--space-3);
+    border-left: 3px solid var(--color-gold);
+    background: var(--color-white);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    box-shadow: var(--shadow-soft);
+}
+
+.value-card h3 {
+    color: var(--color-forest);
+}
+
+/* ── About: team ────────────────────────────────────── */
+.team-grid {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+}
+
+.team-card {
+    background: var(--color-white);
+    padding: var(--space-3);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+}
+
+.team-avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: var(--color-forest);
+    color: var(--color-white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-2);
+    letter-spacing: 0.03em;
+}
+
+.team-card__role {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-forest);
+    margin-bottom: var(--space-1);
+}
+
+/* ── Solutions: pricing cards ───────────────────────── */
+.pricing-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.pricing-card__label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-forest);
+    margin: 0;
+}
+
+.pricing-card__price {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-charcoal);
+    margin: 0;
+    line-height: 1.1;
+}
+
+.pricing-card .button {
+    align-self: flex-start;
+    margin-top: var(--space-1);
+}
+
+/* ── Careers: role areas ────────────────────────────── */
+.role-areas {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+}
+
+.role-card {
+    padding: var(--space-3);
+    background: var(--color-white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    border-top: 3px solid var(--color-gold);
+}
+
+.role-card h3 {
+    color: var(--color-forest);
+}
+
+/* ── Careers: what to expect list ───────────────────── */
+.expect-list {
+    padding-left: 1.25rem;
+    display: grid;
+    gap: 0.625rem;
+}
+
+.expect-list li {
+    line-height: 1.55;
+}
+
+/* ── Footer: contact list ───────────────────────────── */
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.footer-contact a {
+    color: var(--color-cream);
+    text-decoration: none;
+}
+
+.footer-contact a:hover {
+    color: var(--color-gold);
+}
+
+/* ── Select input ───────────────────────────────────── */
+select {
+    width: 100%;
+    border: 1px solid rgba(26, 26, 26, 0.25);
+    border-radius: 0.5rem;
+    background: var(--color-white);
+    padding: 0.625rem 0.75rem;
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--color-charcoal);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231A1A1A' stroke-width='1.5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2.25rem;
+}
+
+@media (min-width: 768px) {
+    .values-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .role-areas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

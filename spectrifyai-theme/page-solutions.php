@@ -86,6 +86,25 @@ get_header();
     </div>
 </section>
 
+<section class="section" data-animate>
+    <div class="container">
+        <h2><?php esc_html_e( 'Pricing', 'spectrifyai-theme' ); ?></h2>
+        <div class="grid-2">
+            <article class="panel pricing-card">
+                <p class="pricing-card__label"><?php esc_html_e( 'Per-Sample Testing', 'spectrifyai-theme' ); ?></p>
+                <p class="pricing-card__price">LKR 15</p>
+                <p><?php esc_html_e( 'Per scan across moisture detection, TPP analysis, and AI grading. No lab fees, no courier costs, no waiting.', 'spectrifyai-theme' ); ?></p>
+            </article>
+            <article class="panel pricing-card">
+                <p class="pricing-card__label"><?php esc_html_e( 'Device Pricing', 'spectrifyai-theme' ); ?></p>
+                <p class="pricing-card__price"><?php esc_html_e( 'On Request', 'spectrifyai-theme' ); ?></p>
+                <p><?php esc_html_e( 'Device cost, support terms, and deployment scope are scoped per client. Contact us to get a quote tailored to your operation.', 'spectrifyai-theme' ); ?></p>
+                <a class="button" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Request a Quote', 'spectrifyai-theme' ); ?></a>
+            </article>
+        </div>
+    </div>
+</section>
+
 <section class="section section--alt" data-animate>
     <div class="container">
         <h2><?php esc_html_e( 'Coming Soon', 'spectrifyai-theme' ); ?></h2>

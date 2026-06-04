@@ -37,8 +37,15 @@ if ( ! defined( 'ABSPATH' ) ) {
             <?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
                 <?php dynamic_sidebar( 'footer-1' ); ?>
             <?php else : ?>
-                <!-- PLACEHOLDER -->
-                <p><?php esc_html_e( 'Add contact details or social links in Footer Widget Area.', 'spectrifyai-theme' ); ?></p>
+                <ul class="footer-contact">
+                    <li>
+                        <a href="tel:+94777930353">+94 77 793 0353</a>
+                    </li>
+                    <li>
+                        <a href="mailto:info@spectrifyai.com">info@spectrifyai.com</a>
+                    </li>
+                    <li>Colombo, Sri Lanka</li>
+                </ul>
             <?php endif; ?>
         </div>
     </div>
