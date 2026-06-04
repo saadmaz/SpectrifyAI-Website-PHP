@@ -110,3 +110,31 @@ function spectrifyai_enqueue_assets(): void {
     );
 }
 add_action( 'wp_enqueue_scripts', 'spectrifyai_enqueue_assets' );
+
+/**
+ * Redirect /product to /solutions for any old links.
+ */
+function spectrifyai_redirect_product(): void {
+    global $wp;
+    if ( rtrim( $wp->request, '/' ) === 'product' ) {
+        wp_redirect( home_url( '/solutions/' ), 301 );
+        exit;
+    }
+}
+add_action( 'template_redirect', 'spectrifyai_redirect_product' );
+
+/**
+ * Trim blog excerpt to 30 words.
+ */
+function spectrifyai_excerpt_length(): int {
+    return 30;
+}
+add_filter( 'excerpt_length', 'spectrifyai_excerpt_length', 999 );
+
+/**
+ * Strip the default […] from excerpts.
+ */
+function spectrifyai_excerpt_more(): string {
+    return '&hellip;';
+}
+add_filter( 'excerpt_more', 'spectrifyai_excerpt_more' );

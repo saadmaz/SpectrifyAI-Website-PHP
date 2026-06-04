@@ -66,10 +66,27 @@ get_header();
 <section class="section" data-animate>
     <div class="container grid-2">
         <article>
-            <h1><?php esc_html_e( 'Contact SpectrifyAI', 'spectrifyai-theme' ); ?></h1>
-            <!-- PLACEHOLDER -->
-            <p><?php esc_html_e( 'Based in Sri Lanka, we collaborate with tea factories, estates, and exporters to modernize quality workflows.', 'spectrifyai-theme' ); ?></p>
-            <a class="button" href="#contact-form"><?php esc_html_e( 'Request a Demo', 'spectrifyai-theme' ); ?></a>
+            <h1><?php esc_html_e( 'Get in Touch', 'spectrifyai-theme' ); ?></h1>
+            <p><?php esc_html_e( 'Based in Sri Lanka, we work directly with tea factories, estates, and exporters across the country. Reach out to schedule a demo, discuss a deployment, or ask a question.', 'spectrifyai-theme' ); ?></p>
+
+            <ul class="contact-info">
+                <li class="contact-info__item">
+                    <span class="contact-info__label"><?php esc_html_e( 'Location', 'spectrifyai-theme' ); ?></span>
+                    <span><?php esc_html_e( 'Colombo, Sri Lanka', 'spectrifyai-theme' ); ?></span>
+                </li>
+                <li class="contact-info__item">
+                    <span class="contact-info__label"><?php esc_html_e( 'Phone', 'spectrifyai-theme' ); ?></span>
+                    <a href="tel:+94777930353">+94 77 793 0353</a>
+                </li>
+                <li class="contact-info__item">
+                    <span class="contact-info__label"><?php esc_html_e( 'Email', 'spectrifyai-theme' ); ?></span>
+                    <a href="mailto:info@spectrifyai.com">info@spectrifyai.com</a>
+                </li>
+                <li class="contact-info__item">
+                    <span class="contact-info__label"><?php esc_html_e( 'Hours', 'spectrifyai-theme' ); ?></span>
+                    <span><?php esc_html_e( 'Monday – Friday, 8:30 am – 5:30 pm IST', 'spectrifyai-theme' ); ?></span>
+                </li>
+            </ul>
         </article>
 
         <article class="panel" id="contact-form">
