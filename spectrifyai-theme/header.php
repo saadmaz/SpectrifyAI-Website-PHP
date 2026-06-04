@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+<a class="skip-link" href="#content"><?php esc_html_e( 'Skip to content', 'spectrifyai-theme' ); ?></a>
 <header class="site-header">
     <div class="container site-header__inner">
         <div class="site-branding">

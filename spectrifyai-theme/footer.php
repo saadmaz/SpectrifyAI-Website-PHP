@@ -14,7 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="container site-footer__grid">
         <div>
             <h2 class="site-footer__title"><?php bloginfo( 'name' ); ?></h2>
-            <!-- PLACEHOLDER -->
             <p><?php esc_html_e( 'Precision tea quality intelligence powered by spectral sensing and AI.', 'spectrifyai-theme' ); ?></p>
         </div>
 

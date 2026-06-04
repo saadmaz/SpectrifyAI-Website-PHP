@@ -138,3 +138,114 @@ function spectrifyai_excerpt_more(): string {
     return '&hellip;';
 }
 add_filter( 'excerpt_more', 'spectrifyai_excerpt_more' );
+
+/**
+ * Preconnect to Google Fonts origin for faster font loading.
+ */
+function spectrifyai_preconnect(): void {
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+    echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+}
+add_action( 'wp_head', 'spectrifyai_preconnect', 1 );
+
+/**
+ * Output meta description, canonical URL, Open Graph, and Twitter Card tags.
+ * Skipped automatically when Yoast SEO or Rank Math is active.
+ */
+function spectrifyai_seo_meta(): void {
+    if ( defined( 'WPSEO_VERSION' ) || defined( 'RANK_MATH_VERSION' ) || defined( 'AIOSEOP_VERSION' ) ) {
+        return;
+    }
+
+    global $post;
+
+    $site_name = get_bloginfo( 'name' );
+
+    if ( is_front_page() ) {
+        $title     = $site_name . ' — AI-Powered Tea Quality Intelligence';
+        $desc      = 'TRI-certified NIR spectrometry and AI grading for Ceylon tea. Instant moisture, polyphenol, and leaf quality results. Trusted by 100+ exporters across Sri Lanka.';
+        $canonical = home_url( '/' );
+        $og_type   = 'website';
+    } elseif ( is_singular() && $post ) {
+        $title     = get_the_title( $post ) . ' — ' . $site_name;
+        $desc      = has_excerpt( $post ) ? wp_strip_all_tags( get_the_excerpt( $post ) ) : get_bloginfo( 'description' );
+        $canonical = get_permalink( $post );
+        $og_type   = 'article';
+    } elseif ( is_archive() ) {
+        $title     = 'Blog — ' . $site_name;
+        $desc      = 'Insights on tea quality, NIR spectrometry, and the Ceylon tea industry from the SpectrifyAI team.';
+        $canonical = get_pagenum_link( get_query_var( 'paged' ) );
+        $og_type   = 'website';
+    } else {
+        $title     = $site_name;
+        $desc      = get_bloginfo( 'description' );
+        $canonical = false;
+        $og_type   = 'website';
+    }
+
+    $title = wp_strip_all_tags( $title );
+    $desc  = wp_strip_all_tags( $desc );
+
+    if ( $canonical ) {
+        echo '<link rel="canonical" href="' . esc_url( $canonical ) . '">' . "\n";
+    }
+    echo '<meta name="description" content="' . esc_attr( $desc ) . '">' . "\n";
+    echo '<meta property="og:type" content="' . esc_attr( $og_type ) . '">' . "\n";
+    echo '<meta property="og:site_name" content="' . esc_attr( $site_name ) . '">' . "\n";
+    echo '<meta property="og:title" content="' . esc_attr( $title ) . '">' . "\n";
+    echo '<meta property="og:description" content="' . esc_attr( $desc ) . '">' . "\n";
+    if ( $canonical ) {
+        echo '<meta property="og:url" content="' . esc_url( $canonical ) . '">' . "\n";
+    }
+    echo '<meta name="twitter:card" content="summary">' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_attr( $title ) . '">' . "\n";
+    echo '<meta name="twitter:description" content="' . esc_attr( $desc ) . '">' . "\n";
+}
+add_action( 'wp_head', 'spectrifyai_seo_meta', 5 );
+
+/**
+ * Output Organization JSON-LD schema on every page.
+ * Output Product JSON-LD schema on the Solutions page.
+ */
+function spectrifyai_schema_markup(): void {
+    $org = array(
+        '@context'     => 'https://schema.org',
+        '@type'        => 'Organization',
+        'name'         => 'SpectrifyAI',
+        'url'          => home_url( '/' ),
+        'email'        => 'info@spectrifyai.com',
+        'telephone'    => '+94-77-793-0353',
+        'address'      => array(
+            '@type'           => 'PostalAddress',
+            'addressLocality' => 'Colombo',
+            'addressCountry'  => 'LK',
+        ),
+        'areaServed'   => 'LK',
+        'knowsAbout'   => array( 'NIR Spectrometry', 'Tea Quality Assessment', 'AI Grading', 'AgriTech' ),
+    );
+    echo '<script type="application/ld+json">' . wp_json_encode( $org, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+
+    if ( is_page( 'solutions' ) ) {
+        $product = array(
+            '@context'    => 'https://schema.org',
+            '@type'       => 'Product',
+            'name'        => 'SpectrifyAI NIR Spectrometer',
+            'description' => 'TRI-certified portable NIR spectrometer for Ceylon tea quality assessment. Measures moisture content, total polyphenol, and AI-based leaf quality grading in seconds.',
+            'brand'       => array(
+                '@type' => 'Brand',
+                'name'  => 'SpectrifyAI',
+            ),
+            'offers'      => array(
+                '@type'         => 'Offer',
+                'priceCurrency' => 'LKR',
+                'price'         => '15',
+                'seller'        => array(
+                    '@type' => 'Organization',
+                    'name'  => 'SpectrifyAI',
+                ),
+            ),
+        );
+        echo '<script type="application/ld+json">' . wp_json_encode( $product, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+    }
+}
+add_action( 'wp_head', 'spectrifyai_schema_markup', 10 );
