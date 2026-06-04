@@ -42,4 +42,17 @@
             section.classList.add('is-visible');
         });
     }
+
+    // FAQ: close other open items when a new one opens (accordion behaviour).
+    document.querySelectorAll('.faq-list').forEach(function (list) {
+        list.addEventListener('toggle', function (e) {
+            if (e.target.open) {
+                list.querySelectorAll('details[open]').forEach(function (other) {
+                    if (other !== e.target) {
+                        other.removeAttribute('open');
+                    }
+                });
+            }
+        }, true);
+    });
 })();
