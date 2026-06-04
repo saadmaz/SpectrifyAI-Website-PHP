@@ -28,8 +28,22 @@ get_header();
                 </div>
             </header>
 
+            <?php if ( has_post_thumbnail() ) : ?>
+                <div class="single-post__thumbnail">
+                    <?php the_post_thumbnail( 'large', array( 'loading' => 'eager' ) ); ?>
+                </div>
+            <?php endif; ?>
+
             <div class="single-post__content">
                 <?php the_content(); ?>
+                <?php
+                wp_link_pages(
+                    array(
+                        'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'spectrifyai-theme' ),
+                        'after'  => '</div>',
+                    )
+                );
+                ?>
             </div>
 
             <footer class="single-post__footer">
@@ -51,6 +65,12 @@ get_header();
                 <?php next_post_link( '%link', '%title &rarr;' ); ?>
             </div>
         </nav>
+
+        <?php
+        if ( comments_open() || get_comments_number() ) {
+            comments_template();
+        }
+        ?>
 
         <?php endwhile; ?>
     </div>

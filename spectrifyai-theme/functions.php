@@ -43,8 +43,26 @@ function spectrifyai_theme_setup(): void {
             'footer'  => __( 'Footer Menu', 'spectrifyai-theme' ),
         )
     );
+
+    add_theme_support( 'customize-selective-refresh-widgets' );
 }
 add_action( 'after_setup_theme', 'spectrifyai_theme_setup' );
+
+/**
+ * Fallback nav: list all published pages when no primary menu is assigned.
+ */
+function spectrifyai_nav_fallback(): void {
+    $pages = get_pages( array( 'sort_column' => 'menu_order', 'number' => 10 ) );
+    if ( ! $pages ) {
+        return;
+    }
+    echo '<ul class="primary-menu">';
+    foreach ( $pages as $page ) {
+        $current = is_page( $page->ID ) ? ' aria-current="page"' : '';
+        echo '<li><a href="' . esc_url( get_permalink( $page ) ) . '"' . $current . '>' . esc_html( $page->post_title ) . '</a></li>';
+    }
+    echo '</ul>';
+}
 
 /**
  * Register widget areas.

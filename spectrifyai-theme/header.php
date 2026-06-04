@@ -42,7 +42,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     'theme_location' => 'primary',
                     'container'      => false,
                     'menu_class'     => 'primary-menu',
-                    'fallback_cb'    => false,
+                    'fallback_cb'    => 'spectrifyai_nav_fallback',
                 )
             );
             ?>

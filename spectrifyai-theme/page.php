@@ -7,7 +7,7 @@
 
 get_header();
 ?>
-<section class="section">
+<section class="section" data-animate>
     <div class="container">
         <?php
         while ( have_posts() ) :
